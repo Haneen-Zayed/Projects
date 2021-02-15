@@ -15,6 +15,7 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+                    <a href="{{route('notes.userNotes')}}" class="btn btn-primary">All Notes</a>
                 </div>
             </div>
         </div>
