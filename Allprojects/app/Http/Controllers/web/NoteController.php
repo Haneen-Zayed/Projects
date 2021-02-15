@@ -5,7 +5,7 @@ use App\Models\Note;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Validator;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\Note as NoteResource;
 
 
@@ -26,18 +26,15 @@ class NoteController extends Controller
      public function store(Request $request)
     {
     	
-         $this->$validate($request,[
-
+        $input=$request->all();
+         $validator=Validator::make($input,[
             'title'=>'required',
             'content'=>'required'
         ]);
 
-        $note=Note::create([
-
-         'user_id'=>Auth::id(),
-         'title'=>$request->title,
-         'content'=>$request->content
-        ]);
+       $user=Auth::user();
+       $input['user_id']=$user->id;
+       $note=Note::create($input);
 
         return redirect()->back();
 
