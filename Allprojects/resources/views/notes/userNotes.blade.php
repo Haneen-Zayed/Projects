@@ -22,7 +22,7 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Title</th>
-      <th scope="col">Name</th>
+      <th scope="col">Date</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
@@ -34,7 +34,7 @@
     <tr>
       <th scope="row">{{$i++}}</th>
       <td>{{$item->title}}</td>
-      <td>{{$item->user->name}}</td>
+      <td>{{$item->created_at}}</td>
       <td>
       	<a href="{{route('notes.edit',['id'=>$item->id])}}" class="btn btn-warning ">Edit</a>
       	<a href="{{route('notes.show',['id'=>$item->id])}}" class="btn btn-primary">Show</a>

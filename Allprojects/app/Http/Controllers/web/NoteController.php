@@ -19,7 +19,8 @@ class NoteController extends BaseController
     
     public function userNotes()
     {
-    	$notes= Note::all();
+    	$id=Auth::id();
+    	$notes= Note::where('user_id', $id)->get();
     	return view('notes.userNotes')->with('notes', $notes);
     }
 
